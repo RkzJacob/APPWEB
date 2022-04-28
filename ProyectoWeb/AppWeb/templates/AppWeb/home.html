@@ -1,12 +1,49 @@
+{% load static %}
+{%load bootstrap4%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    {%bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'AppWeb/css/myStyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="{% static 'AppWeb/js/jquery-3.6.0.js' %}"></script>
 </head>
 <body>
+    <header class="Header">
+        <div class="headerParte1">
+          <div class="container-fluid">
+              <!-- primera fila -->
+              <div class="row">
+                  <!-- columna 1 -->
+                  <div class="col-md-6">
+                      <!-- logo de la pagina -->
+                      <a href="{% url 'home'%}"><img src="{% static 'AppWeb/img/logo.png' %}" width="70" height="60" alt="GroupZero"></a>
+                  </div>
+                  <!-- segunda columna col two-->
+                  <div class="col">
+                      <!-- botones para registrarte y loguearte< p1 >-->
+                      <ul class="nav nav-pills justify-content-end">
+                          <li class="nav-item">
+                            <a class="nav-link  badge badge-secondary" href="{% url 'home'%}">Login</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link badge badge-primary text-dark" href="{% url 'home'%}">Register</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link badge badge-warning text-dark" href="{% url 'home'%}">Panel de control</a>
+                          </li> 
+                        </ul> 
+                      <!--        p1        -->
+                  </div>
+                  <!-- col two -->
+              </div>
+          </div>
+        </div>
+      
     
     
 </body>
