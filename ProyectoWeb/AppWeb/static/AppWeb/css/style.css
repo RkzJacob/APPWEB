@@ -32,3 +32,11 @@
 .txt-piel{
     color:#DBA8AC;
 }
+
+.bordes{
+    border-radius: 20px;
+}
+.padding{
+    padding-top: 10px;
+    bottom: 0;
+}
