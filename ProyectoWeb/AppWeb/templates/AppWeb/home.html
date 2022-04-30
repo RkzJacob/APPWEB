@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     {%bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'AppWeb/css/myStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'AppWeb/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <script src="{% static 'AppWeb/js/jquery-3.6.0.js' %}"></script>
 </head>
@@ -28,7 +28,7 @@
                       <!-- botones para registrarte y loguearte< p1 >-->
                       <ul class="nav nav-pills justify-content-end">
                           <li class="nav-item">
-                            <a class="nav-link  badge badge-secondary" href="{% url 'home'%}">Login</a>
+                            <a class="nav-link  badge badge-indigo txt-piel" href="{% url 'home'%}">Login</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link badge badge-primary text-dark" href="{% url 'home'%}">Register</a>
