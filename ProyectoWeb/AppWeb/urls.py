@@ -12,6 +12,7 @@ urlpatterns = [
     path('Panel_medico/',panelMedico,name='panelMedico'),
     path('Panel_bodeguero/',panelBodeguero,name='panelBodeguero'),
     path('Panel_farmaceutico/',panelFarmaceutico,name='panelFarmaceutico'),
+    path('registrar_medicamentos/',registrarMedicamentos,name='registrarMedicamentos'),
 
 
 ]
