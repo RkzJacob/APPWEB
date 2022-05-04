@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from .forms import MedicamentoForm
+from .models import Medicamento
 
 
 #Pag home
@@ -24,7 +26,21 @@ def panelBodeguero(request):
     return render(request,'AppWeb/panel bodeguero.html')
     #Descompocisión panel bodeguero #Pag registrar medicamentos
 def registrarMedicamentos(request):
-    return render(request,'AppWeb/registrarMedicamento.html')
+    Med =Medicamento.objects.all()
+    datos={
+        'Med' :Med,
+        'form': MedicamentoForm
+    }
+    if request.method == 'POST':
+        formulariod= MedicamentoForm(request.POST)
+
+        if formulariod.is_valid:
+            formulariod.save()
+            datos['mensaje']= 'datos guardados correctamente'
+        else:
+            datos['mensaje']= 'datos no guardados'
+            
+    return render(request,'AppWeb/registrarMedicamento.html',datos)
     #Descompocisión panel bodeguero #Pag Caducar medicamentos
 #def caducarMedicamentos(request):
     #return render(request,'AppWeb/caducarMedicamento.html')

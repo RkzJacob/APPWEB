@@ -40,3 +40,38 @@
     padding-top: 10px;
     bottom: 0;
 }
+.padding2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+#Form1{
+    padding: 40px;
+}
+#FormRegistro{
+    padding: 50px;
+}
+
+.bordes2{
+    border-color:#AA7BC3;;
+}
+.negro{
+    color: white;
+    
+}
+#BODY1{
+    background-color: #CC92C2;
+    color: #531CB3;
+}
+.bordes_negros{
+    border: 10px solid black;
+    border-top: 15px solid orange;
+}
+
+.footer{
+    padding-top: 30px;
+    bottom: 0;
+
+}
