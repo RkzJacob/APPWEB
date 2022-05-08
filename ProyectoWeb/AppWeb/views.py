@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import MedicamentoForm
-from .models import Medicamento
+from .forms import MedicamentoForm,ConsultaForm
+from .models import Medicamento,Consulta
 
 
 #Pag home
@@ -15,7 +15,20 @@ def panelMedico(request):
     return render(request,'AppWeb/panel medico.html')
     #Descompocisión panel medico #Pag registrar consulta medica
 def registrarConsulta(request):
-    return render(request,'AppWeb/RegistrarConsulta.html') 
+    Con =Consulta.objects.all()
+    datos={
+        'Con' :Con,
+        'form': ConsultaForm
+    }
+    if request.method == 'POST':
+        formulariod= ConsultaForm(request.POST)
+
+        if formulariod.is_valid:
+            formulariod.save()
+            datos['mensaje']= 'datos guardados correctamente'
+        else:
+            datos['mensaje']= 'datos no guardados'
+    return render(request,'AppWeb/RegistrarConsulta.html',datos) 
     #Descompocisión panel medico #Pag revisar stock de medicamentos
 def revisarStock(request):
     return render(request,'AppWeb/revisar stock.html') 
@@ -32,7 +45,7 @@ def registrarMedicamentos(request):
         'form': MedicamentoForm
     }
     if request.method == 'POST':
-        formulariod= MedicamentoForm(request.POST)
+        formulariod= MedicamentoForm(request.POST,request.FILES)
 
         if formulariod.is_valid:
             formulariod.save()
@@ -54,7 +67,13 @@ def caducarMedicamentos(request):
     return render(request,'AppWeb/caducarMedicamento.html')
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
-    return render(request,'AppWeb/consultar medicamentos.html')
+    ConMedicamento =Medicamento.objects.all()
+    #cargo los datos de publicaciones de artes con todos sus datos en los artistas 
+    datos ={
+        'ConMedicamento' : ConMedicamento
+    }
+
+    return render(request,'AppWeb/consultar medicamentos.html',datos)
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
 def reservarMedicamentos(request):
     return render(request,'AppWeb/reservarMedicamentos.html')

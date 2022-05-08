@@ -1,5 +1,6 @@
 {% load static %}
 {%load bootstrap4%}
+{%load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     {%bootstrap_css %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'AppWeb/img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'AppWeb/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <script src="{% static 'AppWeb/js/jquery-3.6.0.js' %}"></script>
