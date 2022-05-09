@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.shortcuts import render,redirect
-from .forms import MedicamentoForm,ConsultaForm
+from .forms import MedicamentoForm,ConsultaForm,customUserForm
 from .models import Medicamento,Consulta
+from django.contrib.auth import authenticate,login
 
 
 #Pag home
@@ -8,7 +10,7 @@ def home(request):
     return render(request,'AppWeb/home.html')
 #Pag iniciar sesión
 def iniciarSesion(request):
-    return render(request,'AppWeb/iniciar sesion.html')
+    return render(request,'AppWeb//registrar/iniciar sesion.html')
 
 #Pag panel medico
 def panelMedico(request):
@@ -87,7 +89,22 @@ def panelAdmin(request):
     return render(request,'AppWeb/panel admin.html')
     #Descompocisión panel admin #Pag Registrar cuentas de usuario
 def registrarCuentas(request):
-    return render(request,'AppWeb/registrar cuentas.html')
+    data ={
+        'form':customUserForm()
+    }
+
+    if request.method == 'POST':
+        formulario=customUserForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request,user)
+            messages.success(request,"Te has registrado correctamente")
+            return redirect(to="home")
+        data['form']= formulario
+    return render(request,'AppWeb/registrar/registrar cuentas.html',data)
+
+
     #Descompocisión panel admin #Pag modificar cuentas de usuario
 def modificarCuentas(request):
     return render(request,'AppWeb/modificar cuentas.html')

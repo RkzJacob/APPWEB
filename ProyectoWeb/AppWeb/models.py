@@ -1,15 +1,16 @@
+from tkinter import Label
 from typing import ChainMap
 from django.db import models
 
 # Create your models here.
 class Medicamento(models.Model):
     codigo = models.AutoField(primary_key=True)
-    nombreMedicamento=models.CharField(max_length=40,null=True,verbose_name="Nombre")
+    nombreMedicamento=models.CharField(max_length=40,null=True,verbose_name="Nombre del medicamento")
     descripcionMedicamento=models.CharField(max_length=40,null=True,verbose_name="Descripcion")
     fabricanteMedicamento=models.CharField(max_length=40,null=True,verbose_name="Fabricante")
     contenidoMedicamento=models.CharField(max_length=40,null=True,verbose_name="Contenido")
-    cantidad = models.IntegerField(verbose_name='cantidad',null=True)
-    gramaje = models.IntegerField(verbose_name='gramaje',null=True)
+    cantidad = models.IntegerField(verbose_name='Cantidad',null=True)
+    gramaje = models.IntegerField(verbose_name='Gramaje',null=True)
     imagenPublicacion=models.ImageField(upload_to="fotopublicaciones",null=True)
 
 

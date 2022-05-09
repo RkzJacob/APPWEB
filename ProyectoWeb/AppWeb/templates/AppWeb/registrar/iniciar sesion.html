@@ -1,4 +1,3 @@
-
 {% load static %}
 {%load bootstrap4%}
 {%load crispy_forms_tags %}
@@ -8,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de cuentas</title>
+    <title>Iniciar sesión</title>
     {%bootstrap_css %}
     <link rel="shortcut icon" type="image/png" href="{% static 'AppWeb/img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'AppWeb/css/style.css' %}">
@@ -32,7 +31,29 @@
         </div>
     </header>
 
-
+    <section id="FormRegistroConsulta" >
+      <br>
+      <div class="container bg-piel border border-dark rounded ">
+          <div class="row padding2">
+              <div class="col-md-12 ">
+                  <div>
+                      <h5><txt class="border-dark rounded">Iniciar sesión</txt> </h5>
+                  </div>
+                  <form action="" method="post" id="formulariod" enctype="multipart/form-data">
+                      {% csrf_token %}
+  
+                      {{ form | crispy}}
+                      <br>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary col-2" data-dismiss="modal">Cerrar</button>
+                            <button type="submit"  class="btn btn-primary col-4">Enviar</button>
+                        </div>
+                  </form>  
+              </div>
+          </div>
+      </div>
+      <br>
+  </section>
 
     <footer class="bg-dark text-white footer ">
         <div class="container">

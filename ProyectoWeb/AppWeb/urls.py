@@ -1,6 +1,6 @@
 from django.urls import path
 from django.urls.resolvers import URLPattern
-from .views import home,panelAdmin,panelMedico,panelBodeguero,panelFarmaceutico,caducarMedicamentos,eliminarCuentas,generarInformes,iniciarSesion,modificarCuentas,ConsultarMedicamentos,registrarConsulta,registrarCuentas,registrarMedicamentos,reservarMedicamentos,retiroMedicamentos,revisarStock,verCuentas
+from .views import home,panelAdmin,panelMedico,panelBodeguero,panelFarmaceutico,caducarMedicamentos,eliminarCuentas,generarInformes,iniciarSesion,modificarCuentas,ConsultarMedicamentos,registrarConsulta,registrarCuentas,registrarMedicamentos, reservarMedicamentos,retiroMedicamentos,revisarStock,verCuentas
 
 from django.conf import settings
 from django.conf.urls.static import static
