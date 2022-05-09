@@ -120,17 +120,4 @@ $(document).ready(
       
     )
     
-    $("#Form1").submit(
-        function(){
-          if ($("#error7").type()=="hide" && $("#error6").type()=="hide" && $("#error5").type()=="hide" && $("#error4").type()=="hide" && $("#error3").type()=="hide" && $("#error2").type()=="hide" && $("#error1").type()=="hide") {
-            console.log("SE ENVIO EL FORMULARIO");
-          }else{
-            console.log("NO SE ENVIO EL FORMULARIO");
-            event.preventDefault()
-            
-          }
-           
-        }
-      
-    )
 });    

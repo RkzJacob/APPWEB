@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.shortcuts import render,redirect
-from .forms import MedicamentoForm
-from .models import Medicamento
+from .forms import MedicamentoForm,ConsultaForm,customUserForm
+from .models import Medicamento,Consulta
+from django.contrib.auth import authenticate,login
 
 
 #Pag home
@@ -8,14 +10,27 @@ def home(request):
     return render(request,'AppWeb/home.html')
 #Pag iniciar sesión
 def iniciarSesion(request):
-    return render(request,'AppWeb/iniciar sesion.html')
+    return render(request,'AppWeb//registrar/iniciar sesion.html')
 
 #Pag panel medico
 def panelMedico(request):
     return render(request,'AppWeb/panel medico.html')
     #Descompocisión panel medico #Pag registrar consulta medica
 def registrarConsulta(request):
-    return render(request,'AppWeb/RegistrarConsulta.html') 
+    Con =Consulta.objects.all()
+    datos={
+        'Con' :Con,
+        'form': ConsultaForm
+    }
+    if request.method == 'POST':
+        formulariod= ConsultaForm(request.POST)
+
+        if formulariod.is_valid:
+            formulariod.save()
+            datos['mensaje']= 'datos guardados correctamente'
+        else:
+            datos['mensaje']= 'datos no guardados'
+    return render(request,'AppWeb/RegistrarConsulta.html',datos) 
     #Descompocisión panel medico #Pag revisar stock de medicamentos
 def revisarStock(request):
     return render(request,'AppWeb/revisar stock.html') 
@@ -32,7 +47,7 @@ def registrarMedicamentos(request):
         'form': MedicamentoForm
     }
     if request.method == 'POST':
-        formulariod= MedicamentoForm(request.POST)
+        formulariod= MedicamentoForm(request.POST,request.FILES)
 
         if formulariod.is_valid:
             formulariod.save()
@@ -54,7 +69,13 @@ def caducarMedicamentos(request):
     return render(request,'AppWeb/caducarMedicamento.html')
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
-    return render(request,'AppWeb/consultar medicamentos.html')
+    ConMedicamento =Medicamento.objects.all()
+    #cargo los datos de publicaciones de artes con todos sus datos en los artistas 
+    datos ={
+        'ConMedicamento' : ConMedicamento
+    }
+
+    return render(request,'AppWeb/consultar medicamentos.html',datos)
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
 def reservarMedicamentos(request):
     return render(request,'AppWeb/reservarMedicamentos.html')
@@ -68,7 +89,22 @@ def panelAdmin(request):
     return render(request,'AppWeb/panel admin.html')
     #Descompocisión panel admin #Pag Registrar cuentas de usuario
 def registrarCuentas(request):
-    return render(request,'AppWeb/registrar cuentas.html')
+    data ={
+        'form':customUserForm()
+    }
+
+    if request.method == 'POST':
+        formulario=customUserForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request,user)
+            messages.success(request,"Te has registrado correctamente")
+            return redirect(to="home")
+        data['form']= formulario
+    return render(request,'AppWeb/registrar/registrar cuentas.html',data)
+
+
     #Descompocisión panel admin #Pag modificar cuentas de usuario
 def modificarCuentas(request):
     return render(request,'AppWeb/modificar cuentas.html')
