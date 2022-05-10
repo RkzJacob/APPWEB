@@ -98,11 +98,10 @@ def registrarCuentas(request):
         if formulario.is_valid():
             formulario.save()
             user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
-            login(request,user)
             messages.success(request,"Te has registrado correctamente")
-            return redirect(to="home")
+            return redirect(to="registrarCuentas")
         data['form']= formulario
-    return render(request,'AppWeb/registrar/registrar cuentas.html',data)
+    return render(request,'registration/registro.html',data)
 
 
     #Descompocisión panel admin #Pag modificar cuentas de usuario

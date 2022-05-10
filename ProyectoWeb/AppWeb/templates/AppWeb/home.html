@@ -37,13 +37,23 @@
 
                   <!-- segunda columna col two -->
                   <div class="col-md-7">
-                      <!-- botones para registrarte y loguearte< p1 >-->
+                    {%  if user.is_authenticated %}
+                      <!-- botones para loguearte< p1 >-->
                       <ul class="nav nav-pills justify-content-end">
-                          <li class="nav-item">
-                              <a class="btn   padding " href="{% url 'modificar cuenta'%}"><img src="{% static 'AppWeb/img/login.png' %}" width="40" height="40" >Iniciar sesión</a>
-                          </li>
-                        </ul> 
-                      <!--        p1        -->
+                        <li class="nav-item" >
+                          <a href="" class="txt-morado">@{{user.username}}</a>
+                            <a class="btn   padding " href="{% url 'logout'%}"><img src="{% static 'AppWeb/img/login.png' %}" width="40" height="40" >Cerrar sesión</a>
+                        </li>
+                      </ul> 
+                    <!--        p1        -->
+                    {% else %}
+                    <ul class="nav nav-pills justify-content-end">
+                      <li class="nav-item">
+                          <a class="btn   padding " href="{% url 'login'%}"><img src="{% static 'AppWeb/img/login.png' %}" width="40" height="40" >Iniciar sesión</a>
+                      </li>
+                    </ul> 
+                  <!--        p1        -->
+                    {%  endif %}
                   </div>
                   
                   <!-- col two -->
@@ -52,7 +62,8 @@
         </div>
       </header>
       <!--carrusel-->
-      <div class="container-fluid">
+      
+      <div class="container">
         <div class="row">
           <div class="col-12 pr-0 pl-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -82,7 +93,7 @@
               </a>
             </div>
 
-            <!--Profecionales-->
+            <!--Profesionales-->
             <div class="container">
               <div class="row">
                 <div class="col pt-3">
@@ -122,6 +133,7 @@
           </div>
         </div>
       </div>
+
     <footer class="bg-dark text-white footer ">
         <div class="container-fluid">
           <nav class="row">

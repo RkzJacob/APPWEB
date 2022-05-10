@@ -12,6 +12,7 @@ class Medicamento(models.Model):
     cantidad = models.IntegerField(verbose_name='Cantidad',null=True)
     gramaje = models.IntegerField(verbose_name='Gramaje',null=True)
     imagenPublicacion=models.ImageField(upload_to="fotopublicaciones",null=True)
+    
 
 
     def __str__(self) :
