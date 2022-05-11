@@ -37,7 +37,7 @@
               <div class="col-md-12 ">
                   <div>
                       <br>
-                      <h5><txt class="border-dark rounded">Registrar medicamentos</txt> </h5>
+                      <h5><txt class="border-dark rounded">Retiro de medicamentos</txt> </h5>
                   </div>
                   <form action="" method="post" id="formulariod" enctype="multipart/form-data">
                       {% csrf_token %}
@@ -92,6 +92,21 @@
             </div>
             <br>
     </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                  "title": "Resultado",
+                  "text": "{{m}}",
+                  "icon": "success"
+                })
+
+            </script>
+        {% endfor %}
+      {% endif %}
     
 </body>
 </html>
