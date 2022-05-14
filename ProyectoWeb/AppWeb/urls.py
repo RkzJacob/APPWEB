@@ -1,6 +1,6 @@
 from django.urls import path
 from django.urls.resolvers import URLPattern
-from .views import home,panelAdmin,panelMedico,panelBodeguero,panelFarmaceutico,caducarMedicamentos,eliminarCuentas,generarInformes,iniciarSesion,modificarCuentas,ConsultarMedicamentos,registrarConsulta,registrarCuentas,registrarMedicamentos, reservarMedicamentos,retiroMedicamentos,revisarStock,verCuentas
+from .views import home,panelAdmin,panelMedico,panelBodeguero,panelFarmaceutico,caducarMedicamentos,eliminarCuentas,generarInformes,modificarCuentas,ConsultarMedicamentos,registrarConsulta,registrarCuentas,registrarMedicamentos, reservarMedicamentos,retiroMedicamentos,revisarStock,verCuentas
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -19,7 +19,6 @@ urlpatterns = [
     path('caducar_medicamentos/',caducarMedicamentos,name='caducarMedicamentos'),
     path('eliminar_cuentas/',eliminarCuentas,name='eliminarCuentas'),
     path('generar_informes/',generarInformes,name='generarInformes'),
-    path('iniciar_sesion/',iniciarSesion,name='iniciarSesion'),
     path('modificar_cuentas/',modificarCuentas,name='modificarCuentas'),
     path('ver_cuentas/',verCuentas,name='verCuentas'),
     path('registrar_cuentas/',registrarCuentas,name='registrarCuentas'),

@@ -2,7 +2,7 @@
 from dataclasses import field
 from django import forms
 from django.forms import ModelForm
-from .models import Medicamento,Consulta
+from .models import Medicamento,Consulta,Retiro
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -28,3 +28,10 @@ class customUserForm(UserCreationForm):
     class Meta:
         model = User
         fields= ['username','first_name','last_name','email','user_permissions','password1']
+
+
+class RetiroMedicamentoForm(ModelForm):
+
+    class Meta:
+        model = Retiro
+        fields= ['rut','nombrePersona2','apellidoPersona','cantidad','medicamento']

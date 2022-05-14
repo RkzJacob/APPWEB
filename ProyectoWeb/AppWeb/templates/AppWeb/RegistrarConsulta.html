@@ -36,18 +36,17 @@
         <div class="container bg-piel border border-dark rounded ">
             <div class="row padding2">
                 <div class="col-md-12 ">
-                    <div>
                     
                         <h5><txt class="border-dark rounded">Registrar Consulta médica</txt> </h5>
                         <span style="color:red">{{mensaje}}</span>
-                    </div>
+                    
                     <form action="" method="post" id="formulariod" enctype="multipart/form-data">
                         {% csrf_token %}
     
                         {{ form | crispy}}
                         <br>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary col-2" data-dismiss="modal">Cerrar</button>
+                              <button type="button" class="btn btn-primary col-2 text-white"  ><a href="{% url 'home'%}" class="text-white">Volver al home</a></button>
                               <button type="submit"  class="btn btn-primary col-4">Enviar</button>
                           </div>
                     </form>  
@@ -94,6 +93,21 @@
             </div>
             <br>
     </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                  "title": "Resultado",
+                  "text": "{{m}}",
+                  "icon": "success"
+                })
+
+            </script>
+        {% endfor %}
+      {% endif %}
 
 
 </body>

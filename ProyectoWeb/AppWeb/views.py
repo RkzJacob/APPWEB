@@ -1,16 +1,14 @@
 from django.contrib import messages
 from django.shortcuts import render,redirect
-from .forms import MedicamentoForm,ConsultaForm,customUserForm
-from .models import Medicamento,Consulta
+from .forms import MedicamentoForm,ConsultaForm,customUserForm,RetiroMedicamentoForm
+from .models import Medicamento,Consulta,Retiro
 from django.contrib.auth import authenticate,login
 
 
 #Pag home
 def home(request):
     return render(request,'AppWeb/home.html')
-#Pag iniciar sesión
-def iniciarSesion(request):
-    return render(request,'AppWeb//registrar/iniciar sesion.html')
+
 
 #Pag panel medico
 def panelMedico(request):
@@ -27,9 +25,9 @@ def registrarConsulta(request):
 
         if formulariod.is_valid:
             formulariod.save()
-            datos['mensaje']= 'datos guardados correctamente'
+            messages.success(request,"Datos guardados correctamente")
         else:
-            datos['mensaje']= 'datos no guardados'
+            messages.error(request,"No te has registrado correctamente")
     return render(request,'AppWeb/RegistrarConsulta.html',datos) 
     #Descompocisión panel medico #Pag revisar stock de medicamentos
 def revisarStock(request):
@@ -39,6 +37,7 @@ def revisarStock(request):
 #Pag panel bodeguero
 def panelBodeguero(request):
     return render(request,'AppWeb/panel bodeguero.html')
+
     #Descompocisión panel bodeguero #Pag registrar medicamentos
 def registrarMedicamentos(request):
     Med =Medicamento.objects.all()
@@ -51,9 +50,9 @@ def registrarMedicamentos(request):
 
         if formulariod.is_valid:
             formulariod.save()
-            datos['mensaje']= 'datos guardados correctamente'
+            messages.success(request,"Datos guardados correctamente")
         else:
-            datos['mensaje']= 'datos no guardados'
+            messages.error(request,"No se ha registrado el medicamento")
             
     return render(request,'AppWeb/registrarMedicamento.html',datos)
     #Descompocisión panel bodeguero #Pag Caducar medicamentos
@@ -67,6 +66,8 @@ def panelFarmaceutico(request):
     #Descompocisión panel farmaceutico #Pag Caducar medicamentos
 def caducarMedicamentos(request):
     return render(request,'AppWeb/caducarMedicamento.html')
+
+
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
     ConMedicamento =Medicamento.objects.all()
@@ -74,14 +75,29 @@ def ConsultarMedicamentos(request):
     datos ={
         'ConMedicamento' : ConMedicamento
     }
-
     return render(request,'AppWeb/consultar medicamentos.html',datos)
+
+
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
-def reservarMedicamentos(request):
+def reservarMedicamentos(request): 
     return render(request,'AppWeb/reservarMedicamentos.html')
+
     #Descompocisión panel farmaceutico #Pag retiro de medicamentos
 def retiroMedicamentos(request):
-    return render(request,'AppWeb/retiroMedicamentos.html')
+    Res =Retiro.objects.all()
+    datos={
+        'Res' :Res,
+        'form': RetiroMedicamentoForm
+    }
+    if request.method == 'POST':
+        formulariod= RetiroMedicamentoForm(request.POST)
+
+        if formulariod.is_valid:
+            formulariod.save()
+            messages.success(request,"Datos guardados correctamente")
+        else:
+            messages.error(request,"No se ha guardado el retiro del medicamento")
+    return render(request,'AppWeb/retiroMedicamentos.html',datos)
 
 
 #Pag panel admin
