@@ -31,7 +31,49 @@
         </div>
     </header>
 
+    <section>
+      <br>
+        <div class="container">
+            <div class="row badge-warning">
+                <div class="col badge-warning border border-secondary rounded">
+                    <h1 class="text-center">Cuentas de usuario</h1>
+                    <table class="table">
+                      <TR>
+                          <th scope="col">Usuario</th>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Correo</th>
+                          <th>Modificar</th>
+                          <th>ELIMINAR</th>
+                      </TR>
+                    {% for cuentas in Cu %}
+                    <TR>
+                        <td>{{cuentas.username}}</td>
+                        <td>{{cuentas.first_name}}</td>
+                        <td>{{cuentas.last_name}}</td>
+                        <td>{{cuentas.email}}</td>
+                    
+                        <td><a href="{% url 'modificarCuentas' cuentas.username%} ">Modificar</a></td>
+                        <td><a href="{% url 'eliminarCuentas' cuentas.username%} ">Eliminar</a></td>
+                    </TR>
 
+
+                    {% endfor %}
+                  </table>
+
+                    
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+</section> 
 
 
 

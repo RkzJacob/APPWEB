@@ -17,14 +17,15 @@ urlpatterns = [
     path('registrar_consulta/',registrarConsulta,name='registrarConsulta'),
     path('ver_medicamentos/',ConsultarMedicamentos,name='ConsultarMedicamentos'),
     path('caducar_medicamentos/',caducarMedicamentos,name='caducarMedicamentos'),
-    path('eliminar_cuentas/',eliminarCuentas,name='eliminarCuentas'),
+    path('eliminar_cuentas/<id>',eliminarCuentas,name='eliminarCuentas'),
     path('generar_informes/',generarInformes,name='generarInformes'),
-    path('modificar_cuentas/',modificarCuentas,name='modificarCuentas'),
+    path('modificar_cuentas/<id>',modificarCuentas,name='modificarCuentas'),
     path('ver_cuentas/',verCuentas,name='verCuentas'),
     path('registrar_cuentas/',registrarCuentas,name='registrarCuentas'),
     path('revisar_stock/',revisarStock,name='revisarStock'),
     path('retirar_medicamentos/',retiroMedicamentos,name='retiroMedicamentos'),
     path('reservar_medicamentos/',reservarMedicamentos,name='reservarMedicamentos'),
+   
 
 ]
 

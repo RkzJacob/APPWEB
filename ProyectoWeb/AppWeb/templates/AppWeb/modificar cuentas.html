@@ -31,6 +31,30 @@
         </div>
     </header>
 
+    <section>
+      <br>
+        <div class="container">
+            <div class="row badge-warning">
+                <div class="col badge-warning border border-secondary rounded">
+                    <h1 class="text-center">MODIFICAR CUENTA</h1>
+                    <form action="" method="POST" id="formulariod" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+
+                        {{form | crispy }}
+
+                        <button type="submit" class="btn btn-primary mb-2" >Modificar</button>
+                        <button type="button" class="btn btn-primary mb-2" ><a class="nav-link  badge badge-primary" href="{% url 'verCuentas'%}">Volver atras</a></button>
+
+                   
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+</section> 
 
     <footer class="bg-dark text-white footer ">
         <div class="container">
@@ -69,6 +93,21 @@
             </div>
             <br>
     </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                  "title": "Resultado",
+                  "text": "{{m}}",
+                  "icon": "success"
+                })
+
+            </script>
+        {% endfor %}
+      {% endif %}
     
 </body>
 </html>
