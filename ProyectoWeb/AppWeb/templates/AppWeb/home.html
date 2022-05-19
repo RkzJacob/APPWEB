@@ -34,9 +34,33 @@
                     <br>
                     <button class="btn btn-outline-info txt-morado bg-rosado-claro" type="submit">Search</button>
                   </div>
+                  {% if perms.AppWeb.permiso_1 %}
+                  <div class="col-md-1"> 
+                    <br>
+                    <a class="btn   padding " href="{% url 'panelFarmaceutico'%}">Panel farmace</a>
+                  </div>
+                  {% endif %}
+                  {% if perms.AppWeb.permiso_bodega%}
+                  <div class="col-md-1"> 
+                    <br>
+                    <a class="btn   padding " href="{% url 'panelBodeguero'%}">Panel bodega</a>
+                  </div>
+                  {% endif %}
+                  {% if perms.AppWeb.permiso_medico%}
+                  <div class="col-md-1"> 
+                    <br>
+                    <a class="btn   padding " href="{% url 'panelMedico'%}">Panel medico</a>
+                  </div>
+                  {% endif %}
+                  {% if perms.superUser%}
+                  <div class="col-md-1"> 
+                    <br>
+                    <a class="btn   padding " href="{% url 'panelAdmin'%}">Panel admin</a>
+                  </div>
+                  {% endif %}
 
                   <!-- segunda columna col two -->
-                  <div class="col-md-7">
+                  <div class="col-md-3">
                     {%  if user.is_authenticated %}
                       <!-- botones para loguearte< p1 >-->
                       <ul class="nav nav-pills justify-content-end">
