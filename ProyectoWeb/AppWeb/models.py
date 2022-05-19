@@ -11,6 +11,7 @@ class Medicamento(models.Model):
     contenidoMedicamento=models.CharField(max_length=40,null=True,verbose_name="Contenido")
     cantidad = models.IntegerField(verbose_name='Cantidad',null=True)
     gramaje = models.IntegerField(verbose_name='Gramaje',null=True)
+    precio = models.IntegerField(verbose_name='Precio',null=True)
     imagenPublicacion=models.ImageField(upload_to="fotopublicaciones",null=True)
     
 

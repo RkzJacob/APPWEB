@@ -13,7 +13,7 @@ class MedicamentoForm(ModelForm):
 
     class Meta:
         model = Medicamento
-        fields= ['nombreMedicamento','descripcionMedicamento','fabricanteMedicamento','contenidoMedicamento','cantidad','gramaje','imagenPublicacion']
+        fields= ['nombreMedicamento','descripcionMedicamento','fabricanteMedicamento','contenidoMedicamento','cantidad','gramaje','precio','imagenPublicacion']
         
 
 class ConsultaForm(ModelForm):
