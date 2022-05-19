@@ -81,11 +81,8 @@ def caducarMedicamentos(request):
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
     productos =Medicamento.objects.all()
-    #cargo los datos de los medicamentos 
-    datos ={
-        'productos' : productos
-    }
-    return render(request,'AppWeb/consultar medicamentos.html',datos)
+    
+    return render(request,'AppWeb/consultar medicamentos.html',{'productos':productos})
 
 def agregar_producto(request,producto_id):
     carrito= carrito(request)
