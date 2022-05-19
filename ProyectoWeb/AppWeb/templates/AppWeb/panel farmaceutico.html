@@ -30,15 +30,55 @@
           </div>
         </div>
     </header>
-      <header id="header">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10">
-                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Panel de control <small>Administre su sitio</small></h1>
+     
+    <section id="Panel de control" >
+      <br>
+      <div class="container bg-piel border border-dark rounded ">
+          <div class="row padding2">
+              <div class="col-md-12 ">
+                      <h4><txt class="border-dark rounded">Panel de administración</txt></h4>
+              </div>
+          </div> 
+          <div class="row padding2">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-success col-12 text-white"  ><a href="{% url 'ConsultarMedicamentos'%}" class="text-white">Consultar medicamentos</a></button>
+              
             </div>
-        </div>
-      </header>
+          </div>
+          <div class="row padding2">
+            <div class="col-md-12">
+              
+              <button type="button" class="btn btn-success col-12 text-white"  ><a href="{% url 'caducarMedicamentos'%}" class="text-white">Caducar medicamentos</a></button>
+              
+            </div>
+          </div>
+          <div class="row padding2">
+            <div class="col-md-12">
+              
+              <button type="button" class="btn btn-success col-12 text-white"  ><a href="{% url 'reservarMedicamentos'%}" class="text-white">reservar medicamentos</a></button>
+              
+            </div>
+          </div>
+          <div class="row padding2">
+            <div class="col-md-12">
+              
+              <button type="button" class="btn btn-success col-12 text-white"  ><a href="{% url 'retiroMedicamentos'%}" class="text-white">retiro de medicamentos</a></button>
+              
+            </div>
+          </div>
+          <div class="row padding2">
+            <div class="col-md-12">
+              
+              <button type="button" class="btn btn-success col-12 text-white"  ><a href="{% url 'retiroMedicamentos'%}" class="text-white">ver consultas medicas</a></button>
+              
+            </div>
+          </div>
+          </div>
+          <br>
+          <br>
 
+      <br>
+  </section>
 
     <footer class="bg-dark text-white footer ">
         <div class="container">

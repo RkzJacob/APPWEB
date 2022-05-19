@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from .forms import MedicamentoForm,ConsultaForm,customUserForm,RetiroMedicamentoForm
 from .models import Medicamento,Consulta,Retiro
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.models import User
 
 
 #Pag home
@@ -116,21 +117,49 @@ def registrarCuentas(request):
             user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
             messages.success(request,"Te has registrado correctamente")
             return redirect(to="registrarCuentas")
+        else:
+            messages.error(request,"No se ha podido registrar el usuario")
         data['form']= formulario
     return render(request,'registration/registro.html',data)
 
 
     #Descompocisión panel admin #Pag modificar cuentas de usuario
-def modificarCuentas(request):
-    return render(request,'AppWeb/modificar cuentas.html')
+def modificarCuentas(request,id):
+    Cu=User.objects.get(username=id)
+
+    dic={
+        'form':customUserForm(instance=Cu)
+    }
+
+    if request.method == 'POST':
+        formulario=customUserForm(data=request.POST,instance=Cu)
+
+        if formulario.is_valid:
+            formulario.save()
+            messages.success(request,"Datos modificados con exito")
+        else:
+            messages.error(request,"Los datos no fueron modificados")
+    
+    return render(request,'AppWeb/modificar cuentas.html',dic)
     #Descompocisión panel admin #Pag eliminar cuentas de usuario
-def eliminarCuentas(request):
-    return render(request,'AppWeb/eliminar cuentas.html')
+
+def eliminarCuentas(request,id):
+    user=User.objects.get(username=id)
+
+    user.delete()
+
+    return redirect(to="verCuentas")
+    
     #Descompocisión panel admin #Pag generar informes
 def generarInformes(request):
     return render(request,'AppWeb/generacionInformes.html')
     #Descompocisión panel admin #Pag ver cuentas del sistema
 def verCuentas(request):
-    return render(request,'AppWeb/ver cuentas.html')
+    Cu =User.objects.all()
+    #cargo los datos de publicaciones de artes con todos sus datos en los artistas 
+    datos ={
+        'Cu' : Cu
+    }
+    return render(request,'AppWeb/ver cuentas.html',datos)
 
 
