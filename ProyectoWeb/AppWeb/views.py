@@ -6,9 +6,11 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 
 
+
 #Pag home
 def home(request):
     return render(request,'AppWeb/home.html')
+    
 
 
 #Pag panel medico
@@ -78,12 +80,41 @@ def caducarMedicamentos(request):
 
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
-    ConMedicamento =Medicamento.objects.all()
+    productos =Medicamento.objects.all()
     #cargo los datos de los medicamentos 
     datos ={
-        'ConMedicamento' : ConMedicamento
+        'productos' : productos
     }
     return render(request,'AppWeb/consultar medicamentos.html',datos)
+
+def agregar_producto(request,producto_id):
+    carrito= carrito(request)
+    medicamentos = Medicamento.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect(to='ConsultarMedicamentos')
+
+
+def eliminar_productos(request,producto_id):
+    carrito = carrito(request)
+    producto= Medicamento.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect(to='ConsultarMedicamentos')
+
+def restar_productos(request,producto_id):
+    carrito = carrito(request)
+    producto= Medicamento.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect(to='ConsultarMedicamentos')
+
+def limpiar(request):
+    carrito = carrito(request)
+    carrito.limpiar()
+    return redirect(to='ConsultarMedicamentos')
+
+
+
+
+
 
 
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
