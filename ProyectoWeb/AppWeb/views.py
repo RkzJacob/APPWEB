@@ -84,7 +84,7 @@ def ConsultarMedicamentos(request):
     
     return render(request,'AppWeb/consultar medicamentos.html',{'productos':productos})
 
-def agregar_producto(request,producto_id):
+def agregar_productos(request,producto_id):
     carrito= carrito(request)
     medicamentos = Medicamento.objects.get(id=producto_id)
     carrito.agregar(producto)
@@ -108,23 +108,19 @@ def limpiar(request):
     carrito.limpiar()
     return redirect(to='ConsultarMedicamentos')
 
-
-
-
-
-
-
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
 def reservarMedicamentos(request): 
+
     return render(request,'AppWeb/reservarMedicamentos.html')
 
     #Descompocisión panel farmaceutico #Pag retiro de medicamentos
 def retiroMedicamentos(request):
-    Res =Retiro.objects.all()
+    res =Retiro.objects.all()
     datos={
-        'Res' :Res,
+        'Res' :res,
         'form': RetiroMedicamentoForm
     }
+
     if request.method == 'POST':
         formulariod= RetiroMedicamentoForm(request.POST)
 
@@ -133,6 +129,7 @@ def retiroMedicamentos(request):
             messages.success(request,"Datos guardados correctamente")
         else:
             messages.error(request,"No se ha guardado el retiro del medicamento")
+            
     return render(request,'AppWeb/retiroMedicamentos.html',datos)
 
 
@@ -197,4 +194,5 @@ def verCuentas(request):
     }
     return render(request,'AppWeb/ver cuentas.html',datos)
 
-
+def carrito(request):
+    return render(request,'AppWeb/carrito.html')

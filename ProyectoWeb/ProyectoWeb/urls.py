@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from AppWeb.views import  agregar_productos, eliminar_productos, restar_productos, limpiar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('AppWeb.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
+    path('agregar/<int:producto_id>/', agregar_productos, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_productos, name="Del"),
+    path('restar/<int:producto_id>/', restar_productos, name="Sub"),
+    path('limpiar/', limpiar, name="CLS"),
 
 ]
 

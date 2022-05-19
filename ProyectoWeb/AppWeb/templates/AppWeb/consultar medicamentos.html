@@ -1,7 +1,8 @@
+
+<!DOCTYPE html>
 {% load static %}
 {%load bootstrap4%}
 {%load crispy_forms_tags %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,13 +57,16 @@
                             {% endif %}
                         </a>
                         <div class="card-body">
-                          <h6 class="card-title">{{ P.nombreMedicamento }}</h6>
+                          <h6 class="card-title">{{ P.nombre }}</h6>
                           <br>
                           <h6 class="card-text">Descripción:  {{ P.descripcionMedicamento }}</h6>
                           <br>
                           <p class="card-text">Fabricante: {{P.fabricanteMedicamento}}</p>
                           <br>
                           <p class="card-text">Precio: {{P.precio}}</p>
+                          <br>
+                          <button href="" class="btn btn-primary mb-2" >Agregar al carrito</button>
+                          
                           
                         </div>
                       </div>
@@ -73,6 +77,7 @@
               </div> 
               <br>
             </div>
+         
         </div>
       </section>
     
