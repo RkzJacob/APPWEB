@@ -66,6 +66,7 @@ def panelFarmaceutico(request):
     return render(request,'AppWeb/panel farmaceutico.html')
     #Descompocisión panel farmaceutico #Pag Caducar medicamentos
 def caducarMedicamentos(request):
+
     ConMedicamento =Medicamento.objects.all()
     
     datos ={
@@ -74,10 +75,11 @@ def caducarMedicamentos(request):
     return render(request,'AppWeb/caducarMedicamento.html',datos)
 
 
+
     #Descompocisión panel farmaceutico #Pag consultar medicamentos
 def ConsultarMedicamentos(request):
     ConMedicamento =Medicamento.objects.all()
-    #cargo los datos de publicaciones de artes con todos sus datos en los artistas 
+    #cargo los datos de los medicamentos 
     datos ={
         'ConMedicamento' : ConMedicamento
     }
