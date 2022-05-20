@@ -9,8 +9,6 @@ from django.contrib.auth.models import User
 
 class MedicamentoForm(ModelForm):
     
-
-
     class Meta:
         model = Medicamento
         fields= ['nombre','descripcionMedicamento','fabricanteMedicamento','contenidoMedicamento','cantidad','gramaje','precio','imagenPublicacion']

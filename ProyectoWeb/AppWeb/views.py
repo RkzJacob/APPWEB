@@ -33,8 +33,7 @@ def registrarConsulta(request):
             messages.error(request,"No te has registrado correctamente")
     return render(request,'AppWeb/RegistrarConsulta.html',datos) 
     #Descompocisión panel medico #Pag revisar stock de medicamentos
-def revisarStock(request):
-    return render(request,'AppWeb/revisar stock.html') 
+
 
 
 #Pag panel bodeguero
@@ -86,7 +85,7 @@ def ConsultarMedicamentos(request):
 
 def agregar_productos(request,producto_id):
     carrito= carrito(request)
-    medicamentos = Medicamento.objects.get(id=producto_id)
+    producto = Medicamento.objects.get(id=producto_id)
     carrito.agregar(producto)
     return redirect(to='ConsultarMedicamentos')
 
@@ -110,6 +109,20 @@ def limpiar(request):
 
     #Descompocisión panel farmaceutico #Pag reservar medicamentos
 def reservarMedicamentos(request): 
+    res =Retiro.objects.all()
+    datos={
+        'Res' :res,
+        'form': RetiroMedicamentoForm
+    }
+
+    if request.method == 'POST':
+        formulariod= RetiroMedicamentoForm(request.POST)
+
+        if formulariod.is_valid:
+            formulariod.save()
+            messages.success(request,"Datos guardados correctamente",datos)
+        else:
+            messages.error(request,"No se ha guardado el retiro del medicamento")
 
     return render(request,'AppWeb/reservarMedicamentos.html')
 

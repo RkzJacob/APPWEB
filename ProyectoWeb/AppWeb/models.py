@@ -17,7 +17,7 @@ class Medicamento(models.Model):
 
 
     def __str__(self) :
-        return self.nombreMedicamento
+        return self.nombre
 
 class Consulta(models.Model):
     codigo2 = models.AutoField(primary_key=True)
