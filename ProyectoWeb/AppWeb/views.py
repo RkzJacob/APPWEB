@@ -1,5 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render,redirect
+
+from AppWeb.Carrito import Carrito
 from .forms import MedicamentoForm,ConsultaForm,customUserForm,RetiroMedicamentoForm
 from .models import Medicamento,Consulta,Retiro
 from django.contrib.auth import authenticate,login
@@ -83,27 +85,27 @@ def ConsultarMedicamentos(request):
     
     return render(request,'AppWeb/consultar medicamentos.html',{'productos':productos})
 
-def agregar_productos(request,producto_id):
-    carrito= carrito(request)
+def Agregar_productos(request,producto_id):
+    carrito = Carrito(request)
     producto = Medicamento.objects.get(id=producto_id)
     carrito.agregar(producto)
     return redirect(to='ConsultarMedicamentos')
 
 
-def eliminar_productos(request,producto_id):
-    carrito = carrito(request)
+def Eliminar_productos(request,producto_id):
+    carrito = Carrito(request)
     producto= Medicamento.objects.get(id=producto_id)
     carrito.eliminar(producto)
     return redirect(to='ConsultarMedicamentos')
 
-def restar_productos(request,producto_id):
-    carrito = carrito(request)
+def Restar_productos(request,producto_id):
+    carrito = Carrito(request)
     producto= Medicamento.objects.get(id=producto_id)
     carrito.restar(producto)
     return redirect(to='ConsultarMedicamentos')
 
-def limpiar(request):
-    carrito = carrito(request)
+def Limpiar(request):
+    carrito = Carrito(request)
     carrito.limpiar()
     return redirect(to='ConsultarMedicamentos')
 

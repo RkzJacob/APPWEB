@@ -35,7 +35,11 @@
                     <br>
                     <button class="btn btn-outline-info txt-morado bg-rosado-claro" type="submit">Search</button>
                   </div>
+                  
               </div>
+              
+                
+              
               
           </div>
         </div>
@@ -46,26 +50,26 @@
           
             <div class="row" >
               <div class="w-100"></div>
-              {% for P in productos %}
+              {% for producto in productos %}
                 <div class="col-4 mt-4" >
                     <div class="card  border border-secondary" style="width: 18rem;">
                         <a href="">
-                            {% if P.imagenPublicacion.url == "null" %}
+                            {% if producto.imagenPublicacion.url == "null" %}
                             <img src="{% static 'AppWeb/media/fotopublicaciones/defaultMedicamento' %}" class="card-img-top" alt="imagen producto" width="120" height="240">
                             {%else%}
-                            <img src="{{ P.imagenPublicacion.url }}" class="card-img-top" alt="imagen producto" width="120" height="240">
+                            <img src="{{ producto.imagenPublicacion.url }}" class="card-img-top" alt="imagen producto" width="120" height="240">
                             {% endif %}
                         </a>
                         <div class="card-body">
-                          <h6 class="card-title">{{ P.nombre }}</h6>
+                          <h6 class="card-title">{{ producto.nombre }}</h6>
                           <br>
-                          <h6 class="card-text">Descripción:  {{ P.descripcionMedicamento }}</h6>
+                          <h6 class="card-text">Descripción:  {{ producto.descripcionMedicamento }}</h6>
                           <br>
-                          <p class="card-text">Fabricante: {{P.fabricanteMedicamento}}</p>
+                          <p class="card-text">Fabricante: {{producto.fabricanteMedicamento}}</p>
                           <br>
-                          <p class="card-text">Precio: {{P.precio}}</p>
+                          <p class="card-text">Precio: {{producto.precio}}</p>
                           <br>
-                          <button href="" class="btn btn-primary mb-2" >Agregar al carrito</button>
+                          <a href="{% url 'Agregar_productos' producto.id %}" class="btn btn-primary mb-2" >Agregar al carrito</a>
                           
                           
                         </div>
@@ -74,9 +78,13 @@
                 <br>
               {% endfor %}
               <br>
+              <br>
+              
               </div> 
+              {% include 'AppWeb/carrito.html'%}
               <br>
             </div>
+            
          
         </div>
       </section>

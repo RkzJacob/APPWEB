@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Medicamento(models.Model):
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=40,null=True,verbose_name="Nombre del medicamento")
     descripcionMedicamento=models.CharField(max_length=40,null=True,verbose_name="Descripcion")
     fabricanteMedicamento=models.CharField(max_length=40,null=True,verbose_name="Fabricante")

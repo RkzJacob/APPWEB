@@ -1,9 +1,11 @@
+from argparse import Namespace
 from django.urls import path
 from django.urls.resolvers import URLPattern
 from .views import home,panelAdmin,panelMedico,panelBodeguero,panelFarmaceutico,caducarMedicamentos,eliminarCuentas,generarInformes,modificarCuentas,ConsultarMedicamentos,registrarConsulta,registrarCuentas,registrarMedicamentos, reservarMedicamentos,retiroMedicamentos,verCuentas,carrito
 
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import  Agregar_productos, Eliminar_productos, Restar_productos,Limpiar
 
 
 urlpatterns = [
@@ -25,6 +27,7 @@ urlpatterns = [
     path('retirar_medicamentos/',retiroMedicamentos,name='retiroMedicamentos'),
     path('reservar_medicamentos/',reservarMedicamentos,name='reservarMedicamentos'),
     path('carrito/',carrito,name='carrito'),
+    
    
 
 ]
