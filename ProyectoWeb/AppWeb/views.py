@@ -6,7 +6,9 @@ from .forms import MedicamentoForm,ConsultaForm,customUserForm,RetiroMedicamento
 from .models import Medicamento,Consulta,Retiro
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
-
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
 
 
 #Pag home
@@ -152,6 +154,22 @@ def retiroMedicamentos(request):
 def panelAdmin(request):
     return render(request,'AppWeb/panel admin.html')
     #Descompocisión panel admin #Pag Registrar cuentas de usuario
+
+def enviar_email(mail):
+    context = {'mail': mail}
+    template = get_template('AppWeb/correo.html')
+    content = template.render(context)
+
+    email= EmailMultiAlternatives(
+        'Un correo de prueba',
+        'BRUH',
+        settings.EMAIL_HOST_USER,
+        [mail]
+
+    )
+    email.attach_alternative(content, 'text/html')
+    email.send()
+
 def registrarCuentas(request):
     data ={
         'form':customUserForm()
@@ -161,8 +179,10 @@ def registrarCuentas(request):
         formulario=customUserForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
+            email=formulario.cleaned_data["email"]
             user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
             messages.success(request,"Te has registrado correctamente")
+            enviar_email(email)
             return redirect(to="registrarCuentas")
         else:
             messages.error(request,"No se ha podido registrar el usuario")
