@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+from django.core.mail import send_mail
 
 
 #Pag home
@@ -161,7 +162,7 @@ def enviar_email(mail):
     content = template.render(context)
 
     email= EmailMultiAlternatives(
-        'Un correo de prueba',
+        'Correo de prueba',
         'BRUH',
         settings.EMAIL_HOST_USER,
         [mail]
@@ -179,7 +180,7 @@ def registrarCuentas(request):
         formulario=customUserForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            email=formulario.cleaned_data["email"]
+            email=request.POST['email']
             user= authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
             messages.success(request,"Te has registrado correctamente")
             enviar_email(email)
