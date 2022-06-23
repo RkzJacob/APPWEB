@@ -212,9 +212,10 @@ def modificarCuentas(request,id):
     #Descompocisión panel admin #Pag eliminar cuentas de usuario
 
 def eliminarCuentas(request,id):
-    user=User.objects.get(username=id)
 
+    user=User.objects.get(username=id)
     user.delete()
+    messages.success(request,"Cuenta eliminada con exito")
 
     return redirect(to="verCuentas")
     
@@ -223,6 +224,7 @@ def generarInformes(request):
     return render(request,'AppWeb/generacionInformes.html')
     #Descompocisión panel admin #Pag ver cuentas del sistema
 def verCuentas(request):
+
     Cu =User.objects.all()
     #cargo los datos de publicaciones de artes con todos sus datos en los artistas 
     datos ={
@@ -232,3 +234,13 @@ def verCuentas(request):
 
 def carrito(request):
     return render(request,'AppWeb/carrito.html')
+
+def caducar(id2):
+    cu=Medicamento.objects.get(id=id2)
+    cu.caducado="si"
+    cu.save()
+    cu.save(update_fields=["caducado"])
+    
+
+
+

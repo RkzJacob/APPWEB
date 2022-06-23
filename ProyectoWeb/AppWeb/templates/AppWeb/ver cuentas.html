@@ -53,8 +53,8 @@
                         <td>{{cuentas.last_name}}</td>
                         <td>{{cuentas.email}}</td>
                     
-                        <td><a href="{% url 'modificarCuentas' cuentas.username%} ">Modificar</a></td>
-                        <td><a href="{% url 'eliminarCuentas' cuentas.username%} ">Eliminar</a></td>
+                        <td><a href="{% url 'modificarCuentas' cuentas.username %} ">Modificar</a></td>
+                        <td><a href="{% url 'eliminarCuentas' cuentas.username %} ">Eliminar</a></td>
                     </TR>
 
 
@@ -116,6 +116,23 @@
             </div>
             <br>
     </footer>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                  "title": "Resultado",
+                  "text": "{{m}}",
+                  
+                })
+
+            </script>
+        {% endfor %}
+      {% endif %}
+
+
     
 </body>
 </html>

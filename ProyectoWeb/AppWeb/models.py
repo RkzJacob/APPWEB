@@ -13,6 +13,7 @@ class Medicamento(models.Model):
     gramaje = models.IntegerField(verbose_name='Gramaje',null=True)
     precio = models.IntegerField(verbose_name='Precio',null=True)
     imagenPublicacion=models.ImageField(upload_to="fotopublicaciones",null=True)
+    caducado=models.CharField(max_length=2,null=True,verbose_name="caducar")
     
 
 

@@ -48,13 +48,15 @@
                         {% endif %}
                     </a>
                     <div class="card-body">
-                      <h6 class="card-title">{{ P.nombreMedicamento }}</h6>
+                      <h6 class="card-title">{{ P.nombre }}</h6>
                       <br>
                       <h6 class="card-text">Descripción:  {{ P.descripcionMedicamento }}</h6>
                       <br>
                       <p class="card-text">Fabricante: {{P.fabricanteMedicamento}}</p>
                       <br>
-                      <button> caducar</button>
+                      <p class="card-text">caducado: {{P.caducado}}</p>
+                      <br>
+                      <button><a class="btn   padding " href="{% url 'caducar' P.id %}">caducar</a></button>
                       <br>
                     </div>
                   </div>
