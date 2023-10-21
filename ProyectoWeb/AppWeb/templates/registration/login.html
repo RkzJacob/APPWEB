@@ -1,6 +1,6 @@
 {% load static %}
 {%load bootstrap4%}
-{%load crispy_forms_tags %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
+   
     {%bootstrap_css %}
     <link rel="shortcut icon" type="image/png" href="{% static 'AppWeb/img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'AppWeb/css/style.css' %}">
@@ -16,6 +17,7 @@
     <script src="{% static 'AppWeb/js/script.js'%}" type="text/javascript"></script>
 </head>
 <body>
+  
     <header class="Header">
         <div class="headerParte1">
           <div class="container-fluid bg-rosado-clarin">
@@ -42,7 +44,7 @@
                   <form action="" method="post" id="formulariod" enctype="multipart/form-data">
                       {% csrf_token %}
   
-                      {{ form | crispy}}
+                      {{ form|crispy }}
                       <br>
                           <div class="modal-footer ">
                             <button  class="btn btn-success col-2"><a href="{% url 'home'%}" class="text-white">Volver al home</a> </button>

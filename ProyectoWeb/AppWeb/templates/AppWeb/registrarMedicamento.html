@@ -42,7 +42,7 @@
                 <form action="" method="post" id="formulariod" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    {{ form | crispy}}
+                    {{ form | crispy }}
                     <br>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-primary col-2 text-white"  ><a href="{% url 'home'%}" class="text-white">Volver al home</a></button>

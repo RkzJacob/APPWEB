@@ -38,7 +38,8 @@ LOGOUT_REDIRECT_URL ='/'
 INSTALLED_APPS = [
     #MIS LIBRERIAS
     'bootstrap4',
-    'crispy_forms',
+    "crispy_forms",
+    "crispy_bootstrap4",
     #librerias django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,8 +50,9 @@ INSTALLED_APPS = [
     #MIS APPS
     'AppWeb',
 ]
-
-CRISPY_TEMPLATE_PACK='bootstrap4'
+# Bootstrap 4 crispy forms settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,7 +69,7 @@ ROOT_URLCONF = 'ProyectoWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,4 +146,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smilesfxs@gmail.com'
-EMAIL_HOST_PASSWORD = 'weonestontos89'
+EMAIL_HOST_PASSWORD = 'estkwmleqieklrjs'

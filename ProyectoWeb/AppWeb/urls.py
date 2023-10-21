@@ -30,7 +30,6 @@ urlpatterns = [
     path('caducar/<id>',caducar,name='caducar'),
     
    
-
 ]
 
 if settings.DEBUG:
